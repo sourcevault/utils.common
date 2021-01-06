@@ -1,13 +1,12 @@
 com = require "../dist/main"
 
-{l,z,binapi,print_fail} = com
+{l,zj,z,binapi,print_fail} = com
 
 fail = print_fail "test/test.js"
 
 # ------- ----------------------------------------------------------------------------------
 
-fail 1
-
+z com
 # <| TEST 1 |>
 
 lopo = (state) -> binapi fun,get,state
