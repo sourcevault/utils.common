@@ -3,7 +3,6 @@ var com, l, zj, z, binapi, print_fail, fail, lopo, get, fun, P, K, subtract, sub
 com = require("../dist/main");
 l = com.l, zj = com.zj, z = com.z, binapi = com.binapi, print_fail = com.print_fail;
 fail = print_fail("test/test.js");
-z(com);
 lopo = function(state){
   return binapi(fun, get, state);
 };

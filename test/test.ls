@@ -6,7 +6,6 @@ fail = print_fail "test/test.js"
 
 # ------- ----------------------------------------------------------------------------------
 
-z com
 # <| TEST 1 |>
 
 lopo = (state) -> binapi fun,get,state
