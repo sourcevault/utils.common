@@ -4,6 +4,9 @@
   "email": "joykrishnamondal@gmail.com",
   "homepage": "https://github.com/sourcevault/utils.common#readme.md",
   "license": "Unlicense",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": "https://github.com/sourcevault/utils.common.git",
   "version": "0.0.1",
   "main": "dist/main.js",
