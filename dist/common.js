@@ -89,12 +89,15 @@ rm_paths = function(ignore){
     return in$(path[0] + "/" + path[1], ["internal/modules", "internal/main"]);
   });
 };
-create_stack = function(paths){
+create_stack = function(paths, init_txt){
   var EMP;
   EMP = rm_paths(paths);
   return function(){
     var E, i$, len$, I, lineNumber, fileName, functionName, columnNumber, path, results$ = [];
     E = esp.parse(new Error());
+    if (init_txt) {
+      l(init_txt);
+    }
     for (i$ = 0, len$ = E.length; i$ < len$; ++i$) {
       I = E[i$];
       lineNumber = I.lineNumber, fileName = I.fileName, functionName = I.functionName, columnNumber = I.columnNumber;

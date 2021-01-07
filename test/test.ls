@@ -1,6 +1,6 @@
 com = require "../dist/main"
 
-{l,zj,z,binapi,print_fail} = com
+{l,zj,z,c,binapi,print_fail,create_stack} = com
 
 fail = print_fail "test/test.js"
 

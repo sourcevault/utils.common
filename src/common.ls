@@ -87,13 +87,16 @@ rm_paths = (ignore) ->
         "internal/main"
       ]
 
-create_stack = (paths) ->
+create_stack = (paths,init_txt) ->
 
   EMP = rm_paths paths
 
   ->
 
     E = esp.parse new Error!
+
+    if init_txt
+      l init_txt
 
     for I in E
 
@@ -106,6 +109,8 @@ create_stack = (paths) ->
       if (functionName is \Object.<anonymous>)
 
         functionName = ""
+
+
 
       l lit do
         [
