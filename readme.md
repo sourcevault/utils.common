@@ -8,6 +8,7 @@
    esp            : esp
    lit            : lit
    flat           : flat
+   noop           : noop
    binapi         : binapi
    loopError      : loopfault
    print_fail     : print_fail

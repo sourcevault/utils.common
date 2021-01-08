@@ -1,4 +1,4 @@
-{uic} = require "./common"
+{uic,noop} = require "./common"
 
 generic_log = (state) -> state
 
@@ -26,8 +26,6 @@ veri = (arglen,fun,uget,state,ulog) ->
   | otherwise => generic_log
 
 # -----------------------------------------------
-
-noop = ->
 
 ap = (__,___,args) ->
 

@@ -32,6 +32,10 @@ else
 
 # --------------------------------------------------------------------------------------
 
+noop = !->
+
+noop[util_inspect_custom] = -> @[util_inspect_custom]
+
 j = (x) -> jspc do
   x
   {
@@ -159,6 +163,7 @@ module.exports =
    esp:esp
    lit:lit
    flat:flat
+   noop:noop
    pad:advanced_pad
    loopError:loopfault
    print_fail:print_fail
