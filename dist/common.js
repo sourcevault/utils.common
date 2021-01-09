@@ -93,15 +93,16 @@ rm_paths = function(ignore){
     return in$(path[0] + "/" + path[1], ["internal/modules", "internal/main"]);
   });
 };
-create_stack = function(paths, init_txt){
+create_stack = function(take_only, paths, init_txt){
   var EMP;
   EMP = rm_paths(paths);
   return function(){
-    var E, i$, len$, I, lineNumber, fileName, functionName, columnNumber, path, results$ = [];
+    var E, disp, i$, len$, I, lineNumber, fileName, functionName, columnNumber, path, item;
     E = esp.parse(new Error());
     if (init_txt) {
       l(init_txt);
     }
+    disp = [];
     for (i$ = 0, len$ = E.length; i$ < len$; ++i$) {
       I = E[i$];
       lineNumber = I.lineNumber, fileName = I.fileName, functionName = I.functionName, columnNumber = I.columnNumber;
@@ -112,9 +113,14 @@ create_stack = function(paths, init_txt){
       if (functionName === 'Object.<anonymous>') {
         functionName = "";
       }
-      results$.push(l(lit(["  - ", R.last(path), ":", lineNumber, " ", functionName, "\n    ", fileName + ":", lineNumber, ":" + columnNumber + "\n"], [0, c.warn, 0, c.er, 0, 0, 0, c.black, c.er, c.black])));
+      item = lit(["  - ", R.last(path), ":", lineNumber, " ", functionName, "\n    ", fileName + ":", lineNumber, ":" + columnNumber + "\n"], [0, c.warn, 0, c.er, 0, 0, 0, c.black, c.er, c.black]);
+      disp.push(item);
     }
-    return results$;
+    return l(
+    R.join("\n")(
+    R.take(take_only)(
+    R.reverse(
+    disp))));
   };
 };
 y$ = common_symbols = {};

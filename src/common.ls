@@ -85,13 +85,14 @@ rm_paths = (ignore) ->
 
   R.unless do
     R.find (x) -> ((x is \node_modules) or (x in ignore))
-    (path) -> (path[0] + "/" + path[1]) in do
-      [
-        "internal/modules"
-        "internal/main"
-      ]
+    (path) ->
+      (path[0] + "/" + path[1]) in do
+        [
+          "internal/modules"
+          "internal/main"
+        ]
 
-create_stack = (paths,init_txt) ->
+create_stack = (take_only,paths,init_txt) ->
 
   EMP = rm_paths paths
 
@@ -101,6 +102,8 @@ create_stack = (paths,init_txt) ->
 
     if init_txt
       l init_txt
+
+    disp = []
 
     for I in E
 
@@ -114,9 +117,7 @@ create_stack = (paths,init_txt) ->
 
         functionName = ""
 
-
-
-      l lit do
+      item = lit do
         [
           "  - "
           R.last path
@@ -131,8 +132,15 @@ create_stack = (paths,init_txt) ->
         ]
         [0,c.warn,0,c.er,0,0,0,c.black,c.er,c.black]
 
-# --------------------------------------------------------------------------------------
+      disp.push item
 
+    disp
+    |> R.reverse
+    |> R.take take_only
+    |> R.join "\n"
+    |> l
+
+# --------------------------------------------------------------------------------------
 
 common_symbols = {}
   ..valleydate = Symbol "valleydate"
