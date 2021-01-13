@@ -92,13 +92,13 @@ rm_paths = (ignore) ->
           "internal/main"
         ]
 
-create_stack = (take_only,paths,init_txt) ->
+create_stack = (take_only,paths = [],init_txt) ->
 
   EMP = rm_paths paths
 
-  ->
+  (E)->
 
-    E = esp.parse new Error!
+    E = esp.parse E
 
     if init_txt
       l init_txt
