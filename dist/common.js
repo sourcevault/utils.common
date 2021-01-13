@@ -95,10 +95,11 @@ rm_paths = function(ignore){
 };
 create_stack = function(take_only, paths, init_txt){
   var EMP;
+  paths == null && (paths = []);
   EMP = rm_paths(paths);
-  return function(){
-    var E, disp, i$, len$, I, lineNumber, fileName, functionName, columnNumber, path, item;
-    E = esp.parse(new Error());
+  return function(E){
+    var disp, i$, len$, I, lineNumber, fileName, functionName, columnNumber, path, item;
+    E = esp.parse(E);
     if (init_txt) {
       l(init_txt);
     }
